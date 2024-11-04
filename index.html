@@ -5,15 +5,30 @@
 </head>
 <body>
 
+  <script>
+  function computeSum() {
+  const num1 = parseFloat(document.getElementById('n1').value);
+  const num2 = parseFloat(document.getElementById('n2').value);
+  const sum = num1 + num2;
+      
+  document.getElementById('sum').value = sum;
+    }
+</script>
+</head>
+<body>
+
+  
 <label>First number</label>
 <input type="number" id="n1">
 <label>Second number</label>  
 <input type="number" id="n2">
 <button>Compute Sum</button>
 <br>
-  <label>The Sum is:</label>
-  <input type="number" id="sum" readonly>
+<label>The Sum is:</label>
+<input type="number" id="sum" readonly>
 </input>
   
 </body>
 </html>
+
+
