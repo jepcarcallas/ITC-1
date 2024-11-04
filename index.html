@@ -2,33 +2,30 @@
 <html>
 <head>
   <title>Add 2 Numbers</title>
-</head>
-<body>
-
   <script>
-  function computeSum() {
-  const num1 = parseFloat(document.getElementById('n1').value);
-  const num2 = parseFloat(document.getElementById('n2').value);
-  const sum = num1 + num2;
+    function computeSum() {
+      // Get the values from the input fields
+      const num1 = parseFloat(document.getElementById('n1').value);
+      const num2 = parseFloat(document.getElementById('n2').value);
       
-  document.getElementById('sum').value = sum;
+      // Calculate the sum
+      const sum = num1 + num2;
+      
+      // Display the sum in the readonly input field
+      document.getElementById('sum').value = sum;
     }
-</script>
+  </script>
 </head>
 <body>
 
-  
 <label>First number</label>
 <input type="number" id="n1">
 <label>Second number</label>  
 <input type="number" id="n2">
-<button>Compute Sum</button>
+<button onclick="computeSum()">Compute Sum</button>
 <br>
 <label>The Sum is:</label>
 <input type="number" id="sum" readonly>
-</input>
-  
+
 </body>
 </html>
-
-
