@@ -1,146 +1,418 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>GitHub Website</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SmartCalc Universe</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    /* General Styling */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    /* Intro Screen Styling */
+    #introScreen {
+      text-align: center;
+      width: 100%;
+      max-width: 700px;
+      padding: 30px;
+      border-radius: 20px;
+      background-color: rgba(255, 255, 255, 0.8);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+      animation: fadeIn 1.2s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    #introScreen h2 {
+      font-size: 2.5rem;
+      color: #ff6f61;
+    }
+
+    #introScreen p {
+      font-size: 1.1rem;
+      margin: 10px 0;
+    }
+
+    #introScreen .intro-highlight {
+      color: #ff6f61;
+      font-weight: 600;
+    }
+
+    .intro-button {
+      background-color: #ff6f61;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .intro-button:hover {
+      background-color: #ff4940;
+      box-shadow: 0 6px 15px rgba(255, 105, 97, 0.5);
+    }
+
+    /* Main Content Styling */
+    #mainContent {
+      display: none;
+      width: 100%;
+      max-width: 900px;
+      padding: 20px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      margin-top: 20px;
+    }
+
+    .feature-category {
+      font-size: 1.8rem;
+      margin: 20px 0;
+      color: #ff6f61;
+      font-weight: bold;
+    }
+
+    .feature-card {
+      margin-bottom: 20px;
+      padding: 20px;
+      background: #ffeadb;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .feature-card h3 {
+      font-size: 1.5rem;
+      color: #ff6f61;
+    }
+
+    .feature-card input,
+    .feature-card select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      background-color: white;
+      color: #333;
+    }
+
+    .feature-card button {
+      margin-top: 10px;
+      background-color: #ff6f61;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .feature-card button:hover {
+      background-color: #ff4940;
+    }
+
+    /* Footer Styling */
+    footer {
+      text-align: center;
+      padding: 10px;
+      margin-top: 20px;
+      background-color: #ff6f61;
+      color: white;
+      border-radius: 10px;
+    }
+
+    footer a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    footer a:hover {
+      color: #ffe0db;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      #introScreen h2 {
+        font-size: 2rem;
+      }
+
+      #mainContent h2 {
+        font-size: 1.6rem;
+      }
+
+      .intro-button {
+        font-size: 1rem;
+        padding: 10px 20px;
+      }
+    }
+  </style>
 </head>
 <body>
+  <!-- Intro Screen -->
+  <div id="introScreen">
+    <h2>Welcome to ChelCalc !</h2>
+    <p>Embark on a journey through a <span class="intro-highlight">world of intelligent calculations</span>.</p>
+    <p>Whether you're crunching numbers, managing payroll, or exploring mathematical wonders, we've got you covered!</p>
+    <p><span class="intro-highlight">ChelCalc </span> is your ultimate calculation companion, combining simplicity, precision, and elegance.</p>
+    <button class="intro-button" onclick="showMainContent()">Start Exploring</button>
+  </div>
 
-    <header>
-        <div class="logo">GitHub</div>
-        <nav class="navbar">
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-        <div class="hamburger" onclick="toggleMenu()">
-            &#9776; <!-- Hamburger icon -->
-        </div>
-    </header>
+  <!-- Main Content -->
+  <div id="mainContent">
+    <div class="feature-category">Unit Conversions</div>
+    <div class="feature-card">
+      <h3>Convert Units</h3>
+      <p>Select a conversion type and input a value to convert.</p>
+      <select id="conversionType">
+        <option value="CtoF">Celsius to Fahrenheit</option>
+        <option value="FtoC">Fahrenheit to Celsius</option>
+        <option value="MtoF">Meters to Feet</option>
+        <option value="FtoM">Feet to Meters</option>
+      </select>
+      <input type="number" id="conversionInput" placeholder="Enter value">
+      <button onclick="performConversion()">Convert</button>
+      <div id="conversionResult"></div>
+    </div>
 
-    <main>
-        <section id="home">
-            <h1>Welcome to GitHub</h1>
-            <p>Your one-stop destination for hosting and sharing code.</p>
-        </section>
-        
-        <section id="about">
-            <h2>About GitHub</h2>
-            <p>GitHub is a platform for developers to store and share their code. It allows for version control using Git, making collaboration seamless.</p>
-        </section>
-        
-        <section id="projects">
-            <h2>Projects</h2>
-            <p>Explore open-source projects and collaborate with other developers around the world.</p>
-        </section>
-        
-        <section id="contact">
-            <h2>Contact Us</h2>
-            <p>Have questions? Reach out to us on GitHub!</p>
-        </section>
-    </main>
+    
+    <div class="feature-category">Factorial (While Loop)</div>
+    <div class="feature-card">
+      <h3>Find Factorial</h3>
+      <input type="number" id="factorialInput" class="w3-input" placeholder="Enter Number">
+      <button class="w3-button w3-teal w3-block" onclick="findFactorial()">Calculate</button>
+      <div id="factorialResult" class="w3-margin-top"></div>
+    </div>
 
-    <footer>
-        <p>&copy; 2024 GitHub, Inc. All rights reserved.</p>
-    </footer>
+    <div class="feature-category">Sum and Average (First N Natural Numbers)</div>
+    <div class="feature-card">
+      <h3>Calculate Sum and Average</h3>
+      <input type="number" id="sumAverageInput" class="w3-input" placeholder="Enter N">
+      <button class="w3-button w3-teal w3-block" onclick="calculateSumAndAverage()">Calculate</button>
+      <div id="sumAverageResult" class="w3-margin-top"></div>
+    </div>
 
-    <script src="script.js"></script>
+    <div class="feature-category">Income Tax Calculator</div>
+    <div class="feature-card">
+      <h3>Calculate Income Tax</h3>
+      <input type="number" id="incomeInput" class="w3-input" placeholder="Enter Income">
+      <button class="w3-button w3-teal w3-block" onclick="calculateIncomeTax()">Calculate</button>
+      <div id="incomeTaxResult" class="w3-margin-top"></div>
+    </div>
+
+    <div class="feature-category">Payroll Calculator</div>
+    <div class="feature-card">
+      <div class="feature-category">Payroll Calculator</div>
+    <div class="feature-card">
+      <h3>Manage Payroll</h3>
+      <input type="text" id="employeeName" class="w3-input" placeholder="Employee Name">
+      <input type="number" id="daysWorked" class="w3-input w3-margin-top" placeholder="Days Worked">
+      <input type="number" id="dailyRate" class="w3-input w3-margin-top" placeholder="Daily Rate">
+      <input type="number" id="deductionAmount" class="w3-input w3-margin-top" placeholder="Deduction Amount">
+      <button class="w3-button w3-teal w3-block w3-margin-top" onclick="addEmployee()">Add Employee</button>
+      <table class="w3-table w3-striped w3-bordered w3-margin-top">
+        <thead>
+          <tr class="w3-light-grey">
+            <th>No.</th>
+            <th>Name</th>
+            <th>Days Worked</th>
+            <th>Daily Rate</th>
+            <th>Gross Pay</th>
+            <th>Deduction</th>
+            <th>Net Pay</th>
+          </tr>
+        </thead>
+        <tbody id="payrollTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2024 ChelCalc | Designed with ❤️ for you!</p>
+  </footer>
+
+  <script>
+    function showMainContent() {
+      document.getElementById('introScreen').classList.add('hidden');
+      document.getElementById('mainContent').style.display = 'block';
+    }
+
+    function showIntroScreen() {
+      document.getElementById('mainContent').style.display = 'none';
+      document.getElementById('introScreen').classList.remove('hidden');
+    }
+
+    function performConversion() {
+      const conversionType = document.getElementById('conversionType').value;
+      const input = parseFloat(document.getElementById('conversionInput').value);
+      let result;
+
+      if (isNaN(input)) {
+        alert('Please enter a valid number');
+        return;
+      }
+
+      switch (conversionType) {
+        case 'CtoF':
+          result = (input * 9/5) + 32;
+          document.getElementById('conversionResult').innerText = `${input} °C = ${result.toFixed(2)} °F`;
+          break;
+        case 'FtoC':
+          result = (input - 32) * 5/9;
+          document.getElementById('conversionResult').innerText = `${input} °F = ${result.toFixed(2)} °C`;
+          break;
+        case 'MtoF':
+          result = input * 3.28084;
+          document.getElementById('conversionResult').innerText = `${input} m = ${result.toFixed(2)} ft`;
+          break;
+        case 'FtoM':
+          result = input / 3.28084;
+          document.getElementById('conversionResult').innerText = `${input} ft = ${result.toFixed(2)} m`;
+          break;
+        default:
+          document.getElementById('conversionResult').innerText = '';
+      }
+    }
+
+    function findFactorial() {
+      const num = parseInt(document.getElementById('factorialInput').value);
+      if (isNaN(num) || num < 0) {
+        alert('Please enter a non-negative integer');
+        return;
+      }
+
+      let factorial = 1;
+      for (let i = 1; i <= num; i++) {
+        factorial *= i;
+      }
+      document.getElementById('factorialResult').innerText = `Factorial of ${num} is ${factorial}`;
+    }
+
+    function calculateSumAndAverage() {
+      const n = parseInt(document.getElementById('sumAverageInput').value);
+      if (isNaN(n) || n <= 0) {
+        alert('Please enter a positive integer');
+        return;
+      }
+
+      let sum = 0;
+      for (let i = 1; i <= n; i++) {
+        sum += i;
+      }
+      const average = sum / n;
+      document.getElementById('sumAverageResult').innerText = `Sum: ${sum}, Average: ${average.toFixed(2)}`;
+    }
+
+    function calculateIncomeTax() {
+      const income = parseFloat(document.getElementById('incomeInput').value);
+      if (isNaN(income) || income < 0) {
+        alert('Please enter a valid income');
+        return;
+      }
+
+      let tax = 0;
+      if (income <= 250000) {
+        tax = 0;
+      } else if (income <= 400000) {
+        tax = 0.2 * (income - 250000);
+      } else if (income <= 800000) {
+        tax = 30000 + 0.25 * (income - 400000);
+      } else if (income <= 2000000) {
+        tax = 130000 + 0.3 * (income - 800000);
+      } else {
+        tax = 490000 + 0.32 * (income - 2000000);
+      }
+      document.getElementById('incomeTaxResult').innerText = `Income Tax: PHP ${tax.toFixed(2)}`;
+    }
+
+    function addEmployee() {
+  const name = document.getElementById('employeeName').value.trim();
+  const daysWorked = parseInt(document.getElementById('daysWorked').value);
+  const dailyRate = parseFloat(document.getElementById('dailyRate').value);
+  const deductionAmount = parseFloat(document.getElementById('deductionAmount').value);
+
+  if (!name || isNaN(daysWorked) || isNaN(dailyRate) || isNaN(deductionAmount) || daysWorked <= 0 || dailyRate <= 0) {
+    alert('Please fill out all fields with valid values');
+    return;
+  }
+
+  // Calculate payroll details
+  const grossPay = daysWorked * dailyRate;
+  const netPay = grossPay - deductionAmount;
+
+  // Create a new row for the table
+  const tableBody = document.getElementById('payrollTableBody');
+  const rowCount = tableBody.rows.length + 1;
+  const row = tableBody.insertRow();
+
+  // Insert cells for each detail
+  row.insertCell(0).innerText = rowCount; // No.
+  row.insertCell(1).innerText = name; // Name
+  row.insertCell(2).innerText = daysWorked; // Days Worked
+  row.insertCell(3).innerText = dailyRate.toFixed(2); // Daily Rate
+  row.insertCell(4).innerText = grossPay.toFixed(2); // Gross Pay
+  row.insertCell(5).innerText = deductionAmount.toFixed(2); // Deduction
+  row.insertCell(6).innerText = netPay.toFixed(2); // Net Pay
+
+  // Add a "Remove" button to the row
+  const removeCell = row.insertCell(7);
+  const removeButton = document.createElement('button');
+  removeButton.textContent = 'Remove';
+  removeButton.classList.add('w3-button', 'w3-red');
+  removeButton.onclick = function() {
+    tableBody.deleteRow(row.rowIndex - 1);
+    updateRowNumbers();
+  };
+  removeCell.appendChild(removeButton);
+
+  // Clear input fields after adding employee
+  document.getElementById('employeeName').value = '';
+  document.getElementById('daysWorked').value = '';
+  document.getElementById('dailyRate').value = '';
+  document.getElementById('deductionAmount').value = '';
+}
+
+// Function to update row numbers after removal
+function updateRowNumbers() {
+  const tableBody = document.getElementById('payrollTableBody');
+  for (let i = 0; i < tableBody.rows.length; i++) {
+    tableBody.rows[i].cells[0].innerText = i + 1; // Update "No." column
+  }
+}
+
+  </script>
 </body>
 </html>
 
-/* General styling */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f7f7f7;
-}
-
-header {
-    background-color: #24292f;
-    color: white;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-header .logo {
-    font-size: 24px;
-    font-weight: bold;
-}
-
-header .navbar ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-}
-
-header .navbar ul li {
-    margin: 0 15px;
-}
-
-header .navbar ul li a {
-    text-decoration: none;
-    color: white;
-    font-size: 16px;
-}
-
-header .hamburger {
-    display: none;
-    font-size: 30px;
-    cursor: pointer;
-}
-
-/* Main content styling */
-main {
-    padding: 20px;
-    background-color: white;
-}
-
-section {
-    margin-bottom: 40px;
-}
-
-footer {
-    background-color: #24292f;
-    color: white;
-    text-align: center;
-    padding: 10px;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    header .navbar ul {
-        display: none;
-        width: 100%;
-        flex-direction: column;
-        background-color: #24292f;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        padding: 0;
-    }
-
-    header .navbar ul li {
-        text-align: center;
-        padding: 10px;
-        width: 100%;
-    }
-
-    header .navbar ul li a {
-        font-size: 18px;
-    }
-
-    header .hamburger {
-        display: block;
-    }
-}
-
+  </script>
+</body>
+</html>
